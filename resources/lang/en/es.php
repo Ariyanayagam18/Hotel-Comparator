@@ -1,0 +1,32 @@
+<?php 
+$title="Reserva con nosotras y";
+$subtitle = "Disfruta tu viaje";
+$label =" Dónde te quieres quedar";
+$checkinout ="Llegada Salida";
+$guestroom ="Huéspedes y Habitaciones";
+$Adults ="Adultas";
+$Children ="Niñas";
+$Below_12_years ="(Menores de 12 años)";
+$Rooms ="Habitaciones";
+$reset ="reiniciar";
+$done ="hecho";
+$Search_Hotels="Buscar hoteles";
+$Plan_Your ="Planifique su";
+$Next_Staycation= "Siguiente estancia";
+$Get_the_Best_Prices_from_To ="Consigue los mejores precios desde Hasta";
+$Hotel_Provider ="Proveedor hotelero";
+$See_it_All ="Verlo todo";
+$See_subtext ="Desde hoteles locales hasta marcas globales, descubra millones de habitaciones en todo el mundo.";
+$Compare_Right_Here = "Compara aquí mismo";
+$compare_subtext ="No es necesario buscar en ningún otro lugar. Los nombres más importantes en viajes están aquí.";
+$Get_Rxclusive_Rates="Obtenga tarifas exclusivas";
+$get_subtext ="Tenemos acuerdos especiales con los principales hoteles del mundo y compartimos estos ahorros con usted.";
+$Need ="Necesidad";
+$Inspiration ="Inspiración";
+$View ="Vea nuestros destinos hoteleros cuidadosamente seleccionados";
+$France = "Francia";
+$Amercia = "America";
+$India ="India";
+$London ="Londres";
+$Hotels_view="Hoteles que has visto";
+?>

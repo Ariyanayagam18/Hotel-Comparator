@@ -1,0 +1,441 @@
+    Hostname : 18.135.144.242
+
+    Database : prod_hotelcomp
+
+    Username: monty217
+
+    Password : Xvvbfg#WEsdf@526
+
+    AWS Account ID : 998461569100
+
+    Folder path : /var/www/html 
+
+chmod 400 hotel_comp.pem
+
+sudo apt install php-pgsql
+
+tar -zcvf  /var/www/html/backups/peertv-02-12-2022.tar.gz /var/www/html/peertv
+
+tar -zcvf  /var/www/html/backups/castello-20-12-2022.tar.gz /var/www/html/castello
+
+
+$ sudo puttygen hotel_comp.pem -o hotel_comp.pem -O private
+
+sudo puttygen hotel_comp.pem -o hotel_comp.ppk -O private
+
+puttygen hotel_comp.pem -o hotel_comp.ppk
+
+puttygen hotel_comp.pem -o hotel_comp.ppk
+
+ec2-18-135-144-242.eu-west-2.compute.amazonaws.com	
+
+$ puttygen hotelComp_keypair05.12.2022.pem -O private -o hotelComp_keypair05.12.2022.ppk
+
+
+ssh -i "hotel_comp.pem" ec2-user@ec2-18-135-144-242.eu-west-2.compute.amazonaws.com	
+
+account number : 
+
+user name : TwilightDev
+
+pass : TwilightDev712
+
+public  IP : 18.135.144.242   /  ec2-18-135-144-242.eu-west-2.compute.amazonaws.com	
+
+
+December
+
+December - 5 
+
+Tables 
+
+December - 19
+
+Hotel comparator
+
+ <!-- <a href="{{ route('test.route', array('regionId' => 1,'Country'=>'India' , 'dateFrom' => 'asfdaf',  'dateTo' => 'fsdafsaad','Guest' => 'fsafdsfa','Ratings'=>'fsdafsa') ) }}">click here</a> -->
+
+Hotel comparator
+
+1.Hotels Details view page for a particular hotel Integrtaing from the DB
+
+
+sample hotel in Abu    => regionId - 21179849
+
+Hotel Mountain View Mount Abu
+
+
+SELECT * FROM public."T_summary_data_enUS"
+where "propertyName"='Hotel Mountain View Mount Abu'
+
+December - 20
+
+Hotel comparator
+
+1. Working on Description and check in and checkout section in the hotel details voew page 
+
+2. How to implement Stored Procedures for select Queries  in Postgresql
+
+
+points 
+
+1035, - completed 
+36, - completed 
+37, - completed
+41, - completed 
+40, -  not start yet ( explore other options )
+42,  - completed 
+44  -  doubt (Hotel rating slider section progress bar )
+
+guest ratings and reviews 
+
+expedia link 
+
+Hotel Detailspage - Getting and Updating the particular hotel links for both Expedia and Hotels.com from the Listing API
+
+
+
+tar -xvf Hotelcomparator.tar.xz
+
+
+
+
+
+
+
+ssh -i hotelcomparator.ppk ec2-user@ec2-18-135-144-242.eu-west-2.compute.amazonaws.com
+
+
+
+chmod 400 hotelcomparator.ppk
+
+
+
+
+sudo yum clean metadata
+
+
+sudo nano /etc/nginx/sites-available/default
+
+
+sudo yum install software-properties-common
+
+
+
+
+Libreville
+
+SELECT * FROM public."T_idsRegions_enUS"
+where "provinceName"="Libreville"
+
+
+SELECT * FROM public."T_idsRegions_frFR"
+where "provinceName"="Libreville"
+
+
+
+Query lists : 
+
+different Types
+
+SELECT * FROM public."T_idsRegions_enUS" group by "RegionID" LIMIT 100
+
+select * from "T_idsRegions_enUS" where "CityName" != '' and "CountryName"='India'
+
+search city new 
+ 
+select * from "T_idsRegions_enUS" where "ParentRegionId" = '1658'
+
+httpd -v
+httpd -h
+httpd -k restart
+
+check apache :
+
+sudo service httpd status 
+
+sudo systemctl restart httpd
+
+
+jan 13 
+
+
+git committed "Staycation and home pages query exp"   ->exception no hotels found in home page and stable the query in location table?
+
+
+flaticons
+
+
+jan -17
+
+
+src="/images/${item.Type}.svg" 
+
+
+
+Ameya - 77.06   => usd
+
+
+$('.small-image-preview').on('mouseenter',function(){
+    // console.log('current img src : ',)
+    // let hover_img = $(this).attr('src')
+    let change_img = $(this).parent().parent().parent().find('img.w-100.hotel_img').attr('src',$(this).attr('src'))
+    // console.log("change : ",change_img)
+    // change_img = hover_img
+});
+
+
+
+
+
+location :
+
+where "locationAttribute_region_id"='100'
+
+locationAttribute_region_id
+locationAttribute_city_id
+locationAttribute_neighborhood_id
+
+
+
+SELECT * FROM public."T_property_location_frFR" where "country" like 'India' and "locationAttribute_city_id" is not null LIMIT 1000
+
+5190708   Arpora 
+
+
+
+
+{
+    "action":"devicestatus",
+    "connect_status" :[
+    {
+    "user_id": 123,
+    "app_type":"D.E.M.O",
+    "android_version":11,
+    "club_name":"testing",
+    "device_id": "4164dsf5sag4f4gvdsa4f6g4asdfg4sadf:54sad56f46dsa4fv6gds4fg",
+    "readerId": {
+    "macAddress": "fuejfo8ihfuigewufgrftghuy3fasdfsafas:trgrygeht",
+    "deviceName":"test1",
+    "deviceYear": "2022"
+    },
+    "is_connected":true,
+    "connected_time": 1674542595
+    }
+    ]
+}
+
+zip latest Folder
+
+zip -r latestserver_file.zip /var/www/html/Hotelcomparator
+
+
+
+  /* list-style: none;
+  padding: 0rem 1rem;
+  height: 780px;
+  overflow-y: auto;
+  margin: 0rem;
+  overflow-x: hidden;
+  cursor: pointer; */
+
+
+
+
+SELECT * FROM `system_logs` WHERE action LIKE "Basket Entry Delete" ORDER BY ide DESC
+
+SELECT * FROM `ppa_basketing` WHERE `ring_no` LIKE '%PRPSA-1287%' ORDER BY `entry_id` DESC
+
+
+
+User : man userid : 2256  club : D.E.M.O - Demo Club 123 Bluetooth device : LeSpotOn-802ED8D108F0 deviceYear : 2023-01-31 is : CONNECTED at 2023-01-31 13:02:46 and android version 29
+
+  13109980
+
+
+ create model 
+
+
+ php artisan make:model Regions\\RegionES
+
+ php artisan make:model Summary\\SummaryUS
+
+
+
+ zip -r latest_sourcecode.zip /var/www/html/Hotelcomparator
+
+
+
+ SELECT Loc."*",idregions."Name",idregions."CountryName",Img."images"
+FROM   "T_property_location_enUS" Loc
+JOIN   "T_idsRegions_enUS" idregions ON idregions."RegionID" = Loc."locationAttribute_region_id"
+join  "T_property_images_enUS" Img ON Img."propertyId_expedia" = summarydata."propertyId_expedia"
+WHERE  idregions."RegionID" = RegionID;
+
+
+"locationAttribute_region_id"
+"locationAttribute_city_id"
+"locationAttribute_neighborhood_id"
+
+feb-06
+
+SELECT * FROM public."T_property_location_enUS"
+where "locationAttribute_region_id"='553248634983462070' or "locationAttribute_city_id"='553248634983462070' or "locationAttribute_neighborhood_id"='553248634983462070'
+
+
+php artisan make:model Ref\\PropertyType
+
+
+
+getpropertiesCount
+
+
+
+
+Category ID	Category Name	Property Type
+0	Unknown	Conventional Lodging
+1	Hotel	Conventional Lodging
+2	Motel	Conventional Lodging
+3	Hotel Resort	Conventional Lodging
+4	Inn	Conventional Lodging
+5	Bed & Breakfast	Conventional Lodging
+6	Guest House	Conventional Lodging
+7	Condo	Vacation Rental
+8	All-Inclusive	Conventional Lodging
+9	Cabin	Vacation Rental
+10	Chalet	Vacation Rental
+11	Cottage	Vacation Rental
+12	Hostel / Backpacker Accommodation	Conventional Lodging
+13	Ranch	Conventional Lodging
+14	Villa	Vacation Rental
+15	Lodge	Conventional Lodging
+16	Apartment	Vacation Rental
+17	Private Vacation Home	Vacation Rental
+18	House Boat	Vacation Rental
+20	Ryokan	Conventional Lodging
+21	Tree House	Conventional Lodging
+22	Apart-hotel	Vacation Rental
+23	Condominium Resort	Vacation Rental
+24	Caravan Park	Vacation Rental
+25	Riad	Conventional Lodging
+26	Hostel (Budget Hotel)	Conventional Lodging
+29	Country House	Conventional Lodging
+30	Pension	Conventional Lodging
+31	Pousada (Portugal)	Conventional Lodging
+32	Pousada (Brazil)	Conventional Lodging
+33	Residence	Vacation Rental
+34	TownHouse	Conventional Lodging
+36	Castle	Conventional Lodging
+37	Safari / Tentalow	Conventional Lodging
+39	Palace	Conventional Lodging
+40	Agritourism	Conventional Lodging
+41	Cruise	Conventional Lodging
+42	Holiday Park	Conventional Lodging
+
+
+
+zip -r latestcode_07feb.zip /var/www/html/Hotelcomparator
+
+zip -r models.zip /var/www/html/Hotelcomparator/app/Models/
+
+
+
+
+Febrauary - 08
+
+
+    $rating_array = ["5","4.5"];
+
+    $starrating = SummaryUS::join("T_idsRegions_enUS as Reg",'Reg.CityName', '=', 'city')
+    ->select(SummaryUS::raw('count(*) as count'))
+    ->where('Reg.RegionID',$regionIds)
+    ->whereIn('rating',$rating_array)
+    ->distinct('rating')
+    ->groupBy('rating')
+    ->orderBy('rating','desc')
+    ->get();
+
+Febrauary - 09
+
+
+select "referencePrice_value", count(*) as frequency,
+       50 * floor(TO_NUMBER("referencePrice_value",'9') / 100) as range_start,
+       50 * (floor(TO_NUMBER("referencePrice_value",'9') / 100) + 1) as range_end
+	  from public."T_summary_data_enUS"
+group by "referencePrice_value", 100 * floor(TO_NUMBER("referencePrice_value",'9')), 100 * (floor(TO_NUMBER("referencePrice_value",'9')) + 1) order by "referencePrice_value", min("referencePrice_value")
+
+
+
+Febrauary - 11
+
+
+select * from "T_propertyID_regionID_enUS" as "propReg" inner join "T_property_location_enUS" as "Loc" on "Loc"."propertyId_expedia" = "propReg"."property_ID" inner join "T_guestRatings_reviews_enUS" as "Reviews" on "Reviews"."propertyId_expedia" = "propReg"."property_ID" inner join "T_property_images_enUS" as "Img" on "Img"."propertyId_expedia" = "propReg"."property_ID" where "region_ID" ='1029'  order by "Loc"."propertyType_id" asc
+
+
+
+
+Febrauary 13
+
+
+CREATE FUNCTION 
+getpropertyIdsandCount(RegionID character varying,page bigint)
+  RETURNS TABLE(propertyId_expedia varchar,count bigint)  AS
+$func$
+select Loc."propertyId_expedia",count(*)
+FROM "T_propertyID_regionID_enUS" propReg
+inner join "T_property_location_enUS" Loc
+on Loc."propertyId_expedia" = propReg."property_ID" 
+inner join "T_guestRatings_reviews_enUS" Reviews
+on Reviews."propertyId_expedia" = propReg."property_ID" 
+inner join "T_property_images_enUS" Img 
+on Img."propertyId_expedia" = propReg."property_ID" where "region_ID" = RegionID
+order by Loc."propertyType_id" group by Loc."propertyType_id" asc limit 20 offset page;
+$func$ LANGUAGE sql;
+
+
+select getpropertyIdsandCount('1029','0')
+
+
+final query
+
+ CREATE FUNCTION 
+getpropertyIdsandCount1(RegionID character varying,page bigint)
+  RETURNS SETOF text[] AS
+$func$
+select array[ json_agg(json_build_object('id', loc."propertyId_expedia"::text, 'property_name', loc."propertyName"::text ))]
+FROM "T_propertyID_regionID_enUS" propReg
+inner join "T_property_location_enUS" loc
+on loc."propertyId_expedia" = propReg."property_ID" 
+inner join "T_guestRatings_reviews_enUS" Reviews
+on Reviews."propertyId_expedia" = propReg."property_ID" 
+inner join "T_property_images_enUS" Img 
+on Img."propertyId_expedia" = propReg."property_ID"
+where "region_ID" = RegionID
+ group by loc."propertyId_expedia"  order by loc."propertyType_id"  asc limit 20 offset page;
+$func$ LANGUAGE sql;
+
+
+
+select getpropertyIdsandCount1('1029','0')
+
+select array[to_json(jsonb_build_object('id', loc."propertyId_expedia"::text, 'property_name', loc."propertyName"::text ))]
+FROM "T_propertyID_regionID_enUS" propReg
+inner join "T_property_location_enUS" loc
+on loc."propertyId_expedia" = propReg."property_ID" 
+inner join "T_guestRatings_reviews_enUS" Reviews
+on Reviews."propertyId_expedia" = propReg."property_ID" 
+inner join "T_property_images_enUS" Img 
+on Img."propertyId_expedia" = propReg."property_ID"
+where "region_ID" = RegionID
+group by loc."propertyId_expedia"  order by loc."propertyType_id"  asc limit 20 offset page;
+
+
+
+STRING_AGG (email, ';') email_list
+
+
+
+select array[to_json(jsonb_build_object('property_id', loc."propertyId_expedia"::text, 'property_name', ,loc."propertyName"::text,'propertyType_id',loc."propertyType_id"::text,'address1',loc."address1"::text,'address2',loc."address2"::text,'city',loc."city"::text,'province',loc."province"::text,'country',loc."country"::text,'geolocation',loc."geoLocation"::text,'distancecitycenter',loc."locationAttribute_distanceFromCityCenter"::text,'exp_rating',Reviews.guestRating_expedia,'hcom_rating',Reviews.guestRating_hcom,'main_image',Img.hero_link,'images',Img.images ))]
+
+
+

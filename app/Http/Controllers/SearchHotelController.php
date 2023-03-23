@@ -819,6 +819,8 @@ public function searchwithRegionId($locale,$region_ID,$checkIn,$checkOut)
                     $prop_id = $prop["Id"];
                     $res_exp["property_id"] = $prop["Id"];
                     $res_exp['exp_status'] = 1;
+                    $res_exp['api_latitude'] = isset($prop['Location']['GeoLocation']['Latitude']) ? $prop['Location']['GeoLocation']['Latitude'] : 0 ;
+                    $res_exp['api_longitude'] = isset($prop['GeoLocation']['Longitude']) ? $prop['GeoLocation']['Longitude'] : 0;
                     $res_exp["totalprice_exp"] = $prop["RoomTypes"][0]["Price"]["TotalPriceWithHotelFees"]["Value"];
                     $res_exp["tax_amount_exp"] = isset($prop["RoomTypes"][0]["Price"]["TaxesAndFees"]) ? $prop["RoomTypes"][0]["Price"]["TaxesAndFees"] : 0 ;
                     $res_exp["avgprice_exp"] =  $prop["RoomTypes"][0]["Price"]["AvgNightlyRate"]['Value'];

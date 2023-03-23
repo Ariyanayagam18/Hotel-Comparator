@@ -676,7 +676,8 @@ $base_url = "http://$_SERVER[HTTP_HOST]/Hotelcomparator/public/index.php"; ?>
                             $rating =  (float)isset($data["rating"]) ? $data["rating"] : 0 ;
                             $property_loc['rating'] = ceil($rating);
                             $property_loc['property_id'] = isset($data['property_id']) ? $data['property_id'] : '';
-
+                            $property_loc['latitude'] = isset($data['latitude']) ? $data['latitude'] : $data['api_latitude'] ;
+                            $property_loc['longitude'] = isset($data['longitude']) ? $data['longitude'] : $data['api_longitude'];
                             $geolocation[] = $property_loc;
                             }
 
@@ -2198,6 +2199,72 @@ success:function(data){
 
 }
 
+
+// function initMap() {
+
+//   const center = {
+//     lat: 11.970913,
+//     lng: 79.806696,
+//   };
+
+//   const map = new google.maps.Map(document.getElementById("map"), {
+//     zoom: 11,
+//     center,
+//     mapId: "4504f8b37365c3d0",
+//   });
+
+//  const custom_pricetags = [];
+
+// //   for (const property of properties) {
+
+//     locations1.map(function(item,index){
+
+//     custom_pricetags[index] = document.createElement("div");
+
+//     custom_pricetags[index].className = "price-tag";
+
+//     custom_pricetags[index].id = item.property_id;
+
+//     custom_pricetags[index].textContent = `$${Math.round(item.avgprice_exp)}`;
+
+//     const advancedMarkerView = new google.maps.marker.AdvancedMarkerView({
+//       map,
+//       position: new google.maps.LatLng(item.latitude,item.longitude),
+//       content: custom_pricetags[index]
+//     });
+    
+//     const element = advancedMarkerView.element;
+
+//     ["focus", "pointerenter"].forEach((event) => {
+//       element.addEventListener(event, () => {
+//         highlight(advancedMarkerView, item );
+//       })
+//       });    
+      
+//     ["blur", "pointerleave"].forEach((event) => {
+
+//       element.addEventListener(event, () => {
+//         hoverOnMapPropertyCard();
+//         // alert("mouse leaved from pin!!!")
+//       });
+
+//     });
+
+//     advancedMarkerView.addListener("click", (event) => {
+
+//         alert("you have clicked the price marker!!!")
+
+//     }); 
+  
+  
+// })
+
+// }
+
+// }
+
+
+
 function pinLocationsinMap(locations)
 {
 
@@ -2213,75 +2280,76 @@ var map = new google.maps.Map(document.getElementById("map"), {
   mapId: client_map_id
 });
 
-
-// console.log('myLatLng  ',myLatLng)
-
-// custom price marker icon
-
-// custom price marker icon
-
-var markerView;
-
-var infowindow = new google.maps.InfoWindow();
-
-
 locations.map(function(item,index){
 
     custom_pricetags[index] = document.createElement("div");
 
     custom_pricetags[index].className = "price-tag";
 
+    custom_pricetags[index].id = item.property_id;
+
     custom_pricetags[index].textContent = `$${Math.round(item.avgprice_exp)}`;
 
-    markerView = new google.maps.marker.AdvancedMarkerView({
+    var markerView = new google.maps.marker.AdvancedMarkerView({
     map,
     position: new google.maps.LatLng(item.latitude,item.longitude),
     content: custom_pricetags[index]
     });
 
-    const element = markerView.element;
+    const infowindow = new google.maps.InfoWindow();
 
-    // Create an info window to share between markers.
-//   const infoWindow = new google.maps.InfoWindow();
+    const element  = markerView.element
 
-// Create the markers.
+    //   ["focus", "pointerenter"].forEach((event) => {
+      element.addEventListener("pointerenter", () => {
+        $('.gm-style-iw-tc').css('display','none')
+        //   $('.gm-style-iw-tc').hide()
+        highlight(markerView, item );
+      })
+    //   });    
+    
 
-     
+        // ["blur", "pointerleave"].forEach((event) => {
 
-//   markerView = new google.maps.marker.AdvancedMarkerView({
-//     map,
-//     position: new google.maps.LatLng(item.latitude,item.longitude),
-//     content: custom_pricetags[index]
-//     });
+        element.addEventListener("pointerleave", () => {
 
-  // Add a click listener for each marker, and set up the info window.
-//   markerView.addListener("click", ({ domEvent, latLng }) => {
-//     const { target } = domEvent;
+            console.log("current element id :",$(element).find('.price-tag')[0].id)
 
-//     infoWindow.close();
+            // $('.gm-style-iw-tc').hide();
 
-//     infowindow.setContent(`<div class="map-location">
-//     <a target="_blank" href="/hotelDetails?expediaId=${item.property_id}&price=${Math.round(item.price)}&locale=${$('#active_locale').val()}&regionid=${item.regionid}" ><img src="${item.img_url}" class="map-main-img"></a>
-//     <div class="map-inner">
-//         <p class="hotel-title mb-3">${item.property_name}</p>     
-//         <div class="mb-3">
-//             <img src="<?php echo asset('images/star_${parseInt(item.rating)}.png');?>" style="width:50px">
-//         </div> 
-//         <div class="Night-price text-right">
-//             <span class="total_tax_price">$${Math.round(item.avgprice_exp)}</span> 
-//             a night                                                   
-//         </div>
-//     </div>
-//     </div>`);
+            hoverOnMapPropertyCard($(element).find('.price-tag')[0].id);
 
-//     infoWindow.open(markerView.map, markerView);
-//   });
+            $(`.card_${$(element).find('.price-tag')[0].id}`).fadeOut()
+
+            // $('.gm-style-iw-tc').css('display','none !important')
+            $('.gm-style-iw-tc').css('display','none')
+            
+            // $('.gm-style-iw-tc').fadeOut(100);
+        });
+
+        // });
+
+        markerView.addListener("click", (event) => {
+
+        alert("you have clicked the price marker!!!")
+
+        }); 
+
+    // });
+//   }
 
 
-    //   google.maps.event.addListener(markerView, 'mouseover', (function(markerView, item) {
-  
-    // return function() {
-    //     infowindow.setContent(`<div class="map-location">
+    // ["focus", "pointerenter"].forEach((event) => {
+    
+
+    //   element.addEventListener("pointerenter", () => {
+
+    //     console.log("hover element  : ",$(element))
+
+    //     console.log("hover element position in Top : ",$(element)[0].style.transform)
+
+    //     // highlight(markerView, property);
+    //             infowindow.setContent(`<div class="map-location">
     //     <a target="_blank" href="/hotelDetails?expediaId=${item.property_id}&price=${Math.round(item.price)}&locale=${$('#active_locale').val()}&regionid=${item.regionid}" ><img src="${item.img_url}" class="map-main-img"></a>
     //     <div class="map-inner">
     //         <p class="hotel-title mb-3">${item.property_name}</p>     
@@ -2289,79 +2357,44 @@ locations.map(function(item,index){
     //             <img src="<?php echo asset('images/star_${parseInt(item.rating)}.png');?>" style="width:50px">
     //         </div> 
     //         <div class="Night-price text-right">
-    //             <span class="total_tax_price">$${Math.round(item.avgprice_exp)}</span> 
+    //             <span class="total_tax_price">$${ (item.avgprice_exp && item.avgprice_exp != undefined) ? Math.round(item.avgprice_exp) : Math.round(item.price) }</span> 
     //             a night                                                   
     //         </div>
     //     </div>
     //     </div>`);
+
     //     infowindow.open(map, markerView);
-    // }
-    // })(markerView, item));
-
-
-    ["focus", "pointerenter"].forEach((event) => {
-    
         
-        
-      element.addEventListener(event, (its) => {
+    //         // })(markerView, item));
 
-        console.log("hover element  : ",$(element))
+    //   });
 
-        console.log("hover element position in Top : ",$(element)[0].style.transform)
+    // });
 
-        // highlight(markerView, property);
-                infowindow.setContent(`<div class="map-location">
-        <a target="_blank" href="/hotelDetails?expediaId=${item.property_id}&price=${Math.round(item.price)}&locale=${$('#active_locale').val()}&regionid=${item.regionid}" ><img src="${item.img_url}" class="map-main-img"></a>
-        <div class="map-inner">
-            <p class="hotel-title mb-3">${item.property_name}</p>     
-            <div class="mb-3">
-                <img src="<?php echo asset('images/star_${parseInt(item.rating)}.png');?>" style="width:50px">
-            </div> 
-            <div class="Night-price text-right">
-                <span class="total_tax_price">$${ (item.avgprice_exp && item.avgprice_exp != undefined) ? Math.round(item.avgprice_exp) : Math.round(item.price) }</span> 
-                a night                                                   
-            </div>
-        </div>
-        </div>`);
+    // markerView.addListener("click", (event) => {
 
-        infowindow.open(map, markerView);
-        
-            // })(markerView, item));
+    // $('#map').find('.highlight_click').removeClass('highlight_click')
 
-      });
+    // $('#search_resultajax').find('.selected_map').removeClass('selected_map')
 
-    });
+    // $(element).find('.price-tag').addClass('highlight_click')
 
-    ["blur", "pointerleave"].forEach((event) => {
-      element.addEventListener(event, () => {
-        hoverOnMapPropertyCard();
-        $('.gm-style-iw-t').fadeOut(100);
-        // $(element).find('.price-tag').hide();
-        // unhighlight(markerView, property);
-      });
-    });
-
-    markerView.addListener("click", (event) => {
-
-    $('#map').find('.highlight_click').removeClass('highlight_click')
-
-    $('#search_resultajax').find('.selected_map').removeClass('selected_map')
-
-    $(element).find('.price-tag').addClass('highlight_click')
-
-    $(`#${item.property_id}`).addClass('selected_map')
+    // $(`#${item.property_id}`).addClass('selected_map')
   
-     console.log("items : ",$(`#${item.property_id}`))
+    //  console.log("items : ",$(`#${item.property_id}`))
 
-     window,scrollTo(0,$(`#${item.property_id}`)[0].offsetTop)
+    //  window,scrollTo(0,$(`#${item.property_id}`)[0].offsetTop)
 
 
-    });
+    // });
+
+    // hide end 
 
     // pin_items.push(markerView)
 
+
     
-    // google.maps.event.addListener(markerView, 'mouseover', (function(markerView, item) {
+    // google.maps.event.addListener(markerView, 'click', (function(markerView, item) {
 
     // return function() {
     //     infowindow.setContent(`<div class="map-location">
@@ -2378,19 +2411,40 @@ locations.map(function(item,index){
     //     </div>
     //     </div>`);
     //     infowindow.open(map, markerView);
+
+    //     const element = markerView.element;
+
+    // $('#map').find('.highlight_click').removeClass('highlight_click')
+
+    // $('#search_resultajax').find('.selected_map').removeClass('selected_map')
+
+    // $(element).find('.price-tag').addClass('highlight_click')
+
+    // $(`#${item.property_id}`).addClass('selected_map')
+
+    // console.log("items : ",$(`#${item.property_id}`))
+
+    // window,scrollTo(0,$(`#${item.property_id}`)[0].offsetTop)
+
     // }
+    
+
     // })(markerView, item));
 
     // google.maps.event.addListener(markerView, 'mouseout', (function(markerView, item) {
+    //     const element = markerView.element;
+    //     console.log('mouseout event!!!')
     //         return function() {
     //             // setTimeout(() => {
-    //                 $('.map-location').hide();
-    //                 $('.gm-style-iw-tc').hide();
+    //                 element.hide();
+    //                 // $('.gm-style-iw-tc').hide();
     //             // }, 2000);
     //         }
     //     })(markerView, item));
 
-    // infowindow.open(map, marker);
+    // infowindow.open(map, markerView);
+
+// }
 
 })
 
@@ -2403,20 +2457,51 @@ centerControlDiv.appendChild(centerControl);
 
 map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
 
+// hoverAfter();
+
 }
 
-function hoverOnMapPropertyCard()
+function highlight(markerView,currentProperty) {
+
+const infowindow = new google.maps.InfoWindow();
+
+infowindow.setContent(`<div class="map-location card_${currentProperty.property_id}" data-cardid=${currentProperty.property_id}>
+    <a target="_blank" href="/hotelDetails?expediaId=${currentProperty.property_id}&price=${Math.round(currentProperty.price)}&locale=${$('#active_locale').val()}&regionid=${currentProperty.regionid}" ><img src="${currentProperty.img_url}" class="map-main-img"></a>
+    <div class="map-inner">
+        <p class="hotel-title mb-3">${currentProperty.property_name}</p>     
+        <div class="mb-3">
+            <img src="<?php echo asset('images/star_${parseInt(currentProperty.rating)}.png');?>" style="width:50px">
+        </div> 
+        <div class="Night-price text-right">
+            <span class="total_tax_price">$${Math.round(currentProperty.avgprice_exp)}</span> 
+            a night                                                   
+        </div>
+    </div>
+    </div>`);
+
+        infowindow.open(map, markerView);
+}
+
+// function hoverAfter()
+// {
+   
+// }
+
+function hoverOnMapPropertyCard(elementId)
 {
-    // debugger
-    $('.gm-style-iw-t').hover(
+    $(`.card_${elementId}`).hover(
         // mouse on property
         function () {
-            $('.gm-style-iw-t').fadeIn()
+            $(`.card_${elementId}`).fadeIn(50)
+            $('.gm-style-iw-tc').css('display','none')
         },
         function () {
-            $('.gm-style-iw-t').fadeOut()
+            $(`.card_${elementId}`).fadeOut()
+            $('.gm-style-iw-tc').css('display','none')
+            // $('.gm-style-iw-tc').hide()
         },
     )
+    
 }
 
 // bind location drag items 
@@ -2662,8 +2747,47 @@ $('#pagination-container').pagination({
 
 }
 
+let obj = [
+    {
+    "avgprice_exp": "115.00",
+    "avgprice_hcom": "115.00",
+    "latitude": "46.809856",
+    "longitude": "-92.164855",
+    "property_name": "La Quinta Inn & Suites by Wyndham Duluth",
+    "img_url": "https://images.trvl-media.com/hotels/12000000/11290000/11288300/11288233/90310129_z.jpg",
+    "regionid": "1029",
+    "rating": 3,
+    "property_id": "11288233"
+}
+]
+function customEvents(){
+
+$('.price-tag').mouseenter(function (){ 
+            console.log("this : ",$(this))
+       const infowindow = new google.maps.InfoWindow();
+        infowindow.setContent(`<div class="map-location">
+    <a target="_blank" href="/hotelDetails?expediaId=${obj[0].property_id}&price=${Math.round(obj[0].price)}&locale=${$('#active_locale').val()}&regionid=${obj[0].regionid}" ><img src="${obj[0].img_url}" class="map-main-img"></a>
+    <div class="map-inner">
+        <p class="hotel-title mb-3">${obj[0].property_name}</p>     
+        <div class="mb-3">
+            <img src="<?php echo asset('images/star_${parseInt(obj[0].rating)}.png');?>" style="width:50px">
+        </div> 
+        <div class="Night-price text-right">
+            <span class="total_tax_price">$${Math.round(obj[0].avgprice_exp)}</span> 
+            a night                                                   
+        </div>
+    </div>
+    </div>`);
+
+    infowindow.open(map, markerView);
+})
+}
 
 
 
 
 </script>
+
+
+
+

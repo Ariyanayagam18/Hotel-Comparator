@@ -3403,3 +3403,9 @@ li.suggest_city.first_highlight
 div#myModal2 .modal-footer, div#myModal2 .modal-header {
   border: 0px;
 }
+
+
+.gm-style-iw-tc
+{
+  display: none !important;
+}

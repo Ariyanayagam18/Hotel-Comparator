@@ -213,54 +213,19 @@ $("#loginbutton").click(function() {
   $(".login-section").toggle(); 
 });
 
-$('.counter-minus').click(function() {
-  var quantityField = $(this).next();
-  var value = parseInt(quantityField.val(), 15);
-  if (value > 0) {
-    quantityField.val(value - 1);
+//Guestroomstoggle
+
+$('.counter-minus').click(function(){
+  quantityField = $(this).next();
+  if (quantityField.val() != 0) {
+     quantityField.val(parseInt(quantityField.val(), 10) - 1);
   }
 });
 
-$('.counter-plus').click(function() {
-  var quantityField = $(this).prev();
-  var value = parseInt(quantityField.val(), 10);
-  if (value < 5) {
-    quantityField.val(value + 1);
-  }
+$('.counter-plus').click(function(){
+  quantityField = $(this).prev();
+  quantityField.val(parseInt(quantityField.val(), 10) + 1);
 });
-
-$('input[type=number]').on('input', function() {
-  var value = parseInt($(this).val(), 10);
-  if (isNaN(value) || value < 0) {
-    $(this).val(0);
-  } else if (value > 5) {
-    $(this).val(5);
-  }
-});
-
-
-
-  var minValue = 0; // Minimum value
-  var maxValue = 10; // Maximum value
-
-  // Decrease value on click
-  $('.counter-minus-adults').click(function() {
-    var quantityField = $(this).next();
-    var currentValue = parseInt(quantityField.val(), 10);
-    if (currentValue > minValue) {
-      quantityField.val(currentValue - 1);
-    }
-  });
-
-  // Increase value on click
-  $('.counter-plus-adults').click(function() {
-    var quantityField = $(this).prev();
-    var currentValue = parseInt(quantityField.val(), 10);
-    if (currentValue < maxValue) {
-      quantityField.val(currentValue + 1);
-    }
-  });
-
 
 $('#reset').click(function(){
   $('#guestrooms').val("1 Adult,1 Room ")
@@ -533,97 +498,47 @@ $('.applyBtn').trigger('click')
 var limit = 6; //Set limit for input fields
 var c = 1; //initlal Input Field
 
-        //Action for add input button click
-    $('#childrenadd').click(function(e){
- 
-            $('.module_holder').show();
-            // $('#removechilder').css('cursor','pointer');
-            // $('#removechilder').css('background-color','#0062cc');
-            // $('#removechilder').css('border-color','#0062cc');
+//Action for add input button click
+$('#childrenadd').click(function(e){
+    $('.module_holder').show();    
+    if(c < limit && c!=6){ 
         
-            if(c < limit && c!=6){ 
-                
-               
-               
-                if(c >= 1){
-                    console.log('aaaaaaa',c)
-                   
-                quantityField = $(this).prev();
-                quantityField.val(parseInt(quantityField.val(), 5)+1);
-
-                    $('#container').append('<div class="agechildren col-xl-6 col-lg-6 col-md-12 col-12 mb-2"><select id="d"><option value="1 year" id="d1">1 year</option><option value="2 year" id="d2">2 year</option><option value="3 year" id="d3">3 year</option value="4 year" id="d4"><option>4 year</option><option value="5 year" id="d5">5 year</option><option value="6 year" id="d6">6 year</option></select></div>'); //add input field
-                    $('#childrenadd').prop("disabled", false);
+        if(c >= 1){
+          quantityField = $(this).prev();
+        quantityField.val(parseInt(quantityField.val(), 5)+1);
         
-
-                }
-               
-                c++;
-            } 
-          
-            var totalcount =$('#childrencount').val();
+            $('#container').append('<div class="agechildren col-xl-6 col-lg-6 col-md-12 col-12 mb-2"><select><option>1 year</option><option>2 year</option><option>3 year</option><option>4 year</option><option>5 year</option><option>6 year</option></select></div>'); //add input field
+            $('#childrenadd').prop("disabled", false);
+        }
+        c++;
+    } 
+    var totalcount =$('#childrencount').val();
     console.log('sfasf33333333333333',totalcount)
-    
     if(totalcount == 5){
         
-        //$('#childrenadd').css('cursor','not-allowed');
-        // $('#childrenadd').css('background-color','#e0e3e5');
-        // $('#childrenadd').css('border-color','#e0e3e5');
-        // $('#childrenadd').prop('disabled', 'disabled')
-
-       
+        $('#childrenadd').css('cursor','not-allowed');
+        $('#childrenadd').prop('disabled', true)
         
     }
     else{
         $('#childrenadd').css('cursor','pointer');
-        
-        
     }
         });
-     
         
-        
-//Add click event listener to reset button
-$('#reset').click(function() {
-  $('.module_holder').hide();
-  //Remove all child elements inside the #container element
-  $('#container').empty();
-  //Reset the count of children to 1
-  $('#childrencount').val(1);
-  //Reset the value of c to 1
-  c = 1;
-  // //Enable the 'Add' button
-  // $('#childrenadd').prop("disabled", false);
-  
-});
-
-
-
-
 function removeFormElements(current) {
-    console.log('ccccccccccc',current)
-    
   
     var count =$('#childrencount').val();
     console.log('sfasf',count)
     if(count == 1){
         $('.module_holder').hide();
-        // $('#removechilder').css('cursor','not-allowed');
-        // $('#removechilder').css('background-color','#e0e3e5');
-        // $('#removechilder').css('border-color','#e0e3e5');
         
     }
   if(c >=1){
     c--
-    
   }
-   
-    $('.agechildren').last('#container').remove();
-    // $('#childrenadd').css('background-color','#007bff');
-    // $('#childrenadd').css('border-color','#007bff');
-       
-
+    $('.agechildren').last('#container').remove();      
 }
-  
+
 
 //children and rooms end
 

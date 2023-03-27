@@ -9,6 +9,9 @@
     display: none !important;
 }
 
+.home-page .section-1 .form-group select {
+    text-align: center;
+}
 </style>
 
 <?php 
@@ -50,135 +53,72 @@ $base_url = "http://$_SERVER[HTTP_HOST]/Hotelcomparator/public/index.php"; ?>
                         <input type="text" class="calender-sec" name="datefilter" id="date_picker" value="06/11/2022 to 13/11/2022" readonly/> 
                     </div>
                     <div class="col-xl-2 col-lg-3 col-md-6 col-sm-6 col-12 form-group">
-                    <label>Guests and Rooms</label>                   
-                    <div class="position-relative">
-                        <div class="guestrooms" id="guestrooms">
-                            <input class="guest-input" value="1 adult, 1 Room" />                      
+                        <label>Guests and Rooms</label>                   
+                        <div class="position-relative">
+                            <div class="guestrooms" id="guestrooms">
+                                <input class="guest-input" value="1 adult, 1 Room" />                      
+                            </div>
+                            <div class="members" style="display:none">
+                                    <div class="list-room">
+                                        <div class="list-guest">
+                                            <img src="{{asset('images/Maskgroup.svg')}}"> 
+                                            <p>Adults</p>
+                                        </div>
+                                        <div class="handle-counter" id="handleCounter">
+                                            <div class="counter-minus-adults btn btn-primary">
+                                                <img src="{{asset('images/white-arrow.svg')}}">   
+                                            </div>
+                                            <input type="text" class="adults" value="0">
+                                            <div class="counter-plus-adults btn btn-primary">
+                                                <img src="{{asset('images/white-arrow.svg')}}">   
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="list-room">
+                                        <div class="list-guest">
+                                            <img src="{{asset('images/childrengroup.svg')}}"> 
+                                            <span>Children
+                                                <p style="font-size:10px">(Below 12 years)</p>
+                                            </span> 
+                                        </div>
+                                        <div class="handle-counter" id="handleCounter">
+                                            <div class="counter-minus btn btn-primary">
+                                                   <img src="{{asset('images/white-arrow.svg')}}">
+                                            </div>
+                                            <input type="text" class="Children" value="0">
+                                            <div class="counter-plus btn btn-primary">
+                                                   <img src="{{asset('images/white-arrow.svg')}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="list-room">
+                                        <div class="list-guest">
+                                            <img src="{{asset('images/roomgroup.svg')}}"> 
+                                            <p>Rooms </p>
+                                        </div>
+                                        <div class="handle-counter" id="handleCounter">
+                                            <div class="counter-minus btn btn-primary">
+                                                   <img src="{{asset('images/white-arrow.svg')}}">
+                                            </div>
+                                            <input type="text" class="Rooms" value="0">
+                                            <div class="counter-plus btn btn-primary">
+                                                   <img src="{{asset('images/white-arrow.svg')}}">
+                                            </div>
+                                        </div>
+                                    </div>      
+                                    <hr>                         
+                                    <div class="reset-ok">
+                                        <div id="reset">
+                                            Reset
+                                       </div>
+                                        <div id="guests_ok">
+                                            Done
+                                       </div>
+                                    </div>
+                            </div>
                         </div>
-                        <div class="members" style="display:none">
-                                <div class="list-room">
-                                    <div class="list-guest">
-                                        <img src="{{asset('images/Maskgroup.svg')}}"> 
-                                        <p>Adults</p>
-                                    </div>
-                                    <div class="handle-counter" id="handleCounter">
-                                        <div class="counter-minus btn btn-primary">
-                                            <img src="{{asset('images/white-arrow.svg')}}">   
-                                        </div>
-                                        <input type="text" class="adults" value="0">
-                                        <div class="counter-plus btn btn-primary">
-                                            <img src="{{asset('images/white-arrow.svg')}}">   
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="list-room">
-                                    <div class="list-guest">
-                                        <img src="{{asset('images/childrengroup.svg')}}"> 
-                                        <span>Children
-                                            <p style="font-size:10px">(Below 12 years)</p>
-                                        </span> 
-                                    </div>
-                                    <div class="handle-counter" id="handleCounter">
-                                        <div class="counter-minus btn btn-primary">
-                                               <img src="{{asset('images/white-arrow.svg')}}">
-                                        </div>
-                                        <input type="text" class="Children" value="0">
-                                        <div class="counter-plus btn btn-primary">
-                                               <img src="{{asset('images/white-arrow.svg')}}">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="list-room">
-                                    <div class="list-guest">
-                                        <img src="{{asset('images/roomgroup.svg')}}"> 
-                                        <p>Rooms </p>
-                                    </div>
-                                    <div class="handle-counter" id="handleCounter">
-                                        <div class="counter-minus btn btn-primary">
-                                               <img src="{{asset('images/white-arrow.svg')}}">
-                                        </div>
-                                        <input type="text" class="Rooms" value="0">
-                                        <div class="counter-plus btn btn-primary">
-                                               <img src="{{asset('images/white-arrow.svg')}}">
-                                        </div>
-                                    </div>
-                                </div>      
-                                <hr>                         
-                                <div class="reset-ok">
-                                    <div id="reset">
-                                        Reset
-                                   </div>
-                                    <div id="guests_ok">
-                                        Done
-                                   </div>
-                                </div>
-                        </div>
-                    </div>
-                </div>
-                    <!-- <div class="col-xl-2 col-lg-3 col-md-6 col-sm-6 col-12 form-group">
-                        <label>Popular Filters</label>
-                        <div class="position-relative PopularFilters">
-                        <div class="Popular-Filters" id="popular-filter">
-                            <input class="pop-input" value="0 star"  />                      
-                        </div>
-                        <div class="Pop_Filter" style="display:none">
-                            <div class="popular-bor">                                
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input popular" id="customCheck27">
-                                    <label class="custom-control-label" for="customCheck27">
-                                        <span class="ml-3 d-flex align-items-center">3 Stars 
-                                            <span class="star-multi ml-1 mr-2">
-                                                <img src="{{asset('images/Star.svg')}}">
-                                                <img src="{{asset('images/Star.svg')}}">
-                                                <img src="{{asset('images/Star.svg')}}">
-                                            </span>
-                                        </span>
-                                    </label>
-                                </div>                                                                
-                            </div> 
-                            <div class="popular-bor">                                
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input popular" id="customCheck28">
-                                    <label class="custom-control-label" for="customCheck28">
-                                        <span class="ml-3 d-flex align-items-center">4 Stars 
-                                            <span class="star-multi ml-1 mr-2">
-                                                <img src="{{asset('images/Star.svg')}}">
-                                                <img src="{{asset('images/Star.svg')}}">
-                                                <img src="{{asset('images/Star.svg')}}">
-                                                <img src="{{asset('images/Star.svg')}}">
-                                            </span>
-                                        </span>
-                                    </label>
-                                </div>                                                                
-                            </div> 
-                            <div class="popular-bor">                                
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input popular" id="customCheck29">
-                                    <label class="custom-control-label" for="customCheck28">
-                                        <span class="ml-3 d-flex align-items-center">5 Stars 
-                                            <span class="star-multi ml-1 mr-2">
-                                                <img src="{{asset('images/Star.svg')}}">
-                                                <img src="{{asset('images/Star.svg')}}">
-                                                <img src="{{asset('images/Star.svg')}}">
-                                                <img src="{{asset('images/Star.svg')}}">
-                                            </span>
-                                        </span>
-                                    </label>
-                                </div>                                                                
-                            </div>  
-                            <div class="popular-bor">                                
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input popular" id="customCheck30">
-                                    <label class="custom-control-label" for="customCheck29">
-                                        <span class="ml-3 d-flex align-items-center">
-                                            Free Cancellation                                           
-                                        </span>
-                                    </label>
-                                </div>                                                                
-                            </div> 
-                        </div>
-                    </div>  
-                    </div> -->
+    
+                    
                     <div class="col-xl-2 col-lg-12 col-md-12 col-sm-12 col-12 form-group text-center text-xl-left Search-Hotels">
                         <label></label>
                         <a class="btn btn-primary" id="search">Search Hotels</a>
@@ -618,11 +558,11 @@ $base_url = "http://$_SERVER[HTTP_HOST]/Hotelcomparator/public/index.php"; ?>
                                 <div class="align-items-center d-flex">
                                     <div class="sort-by">Sort by</div>
                                     <div class="sort-select">
-                                        <select class="form-control">
+                                        <select class="form-control" id="sort_byfilter">
                                             <option>Best</option>
-                                            <option>Best</option>
-                                            <option>Best</option>
-                                            <option>Best</option>
+                                            <option value="lowest">Lowest</option>
+                                            <option value="highest">Highest</option>
+                                            <option value="moststars">More stars</option>    
                                         </select>
                                     </div>
                                 </div>
@@ -1903,12 +1843,6 @@ success:function(data){
 
 }
 
-
-
-
-
-
-
 // get Hotels Ajax 
 
 function getPropertiesSearch(region_ID,offset)
@@ -2119,6 +2053,55 @@ function splitLocationsPin(all_items)
 return paginate_pinarr;
 
 }
+
+
+
+let filter_arr = locations
+
+function filterBasedOptions(filter_type)
+{
+    
+for(let i=0;i< filter_arr.length;i++)
+{
+    for(let j=0;j <= i ;j ++)
+    {
+        if( ( parseFloat(filter_arr[i].avgprice_exp) < parseFloat(filter_arr[j].avgprice_exp) || parseFloat(filter_arr[i].avgprice_hcom) < parseFloat(filter_arr[j].avgprice_hcom) ) && filter_type == "lowest")
+        {
+            let temp = filter_arr[i]
+            filter_arr[i] = filter_arr[j]
+            filter_arr[j] = temp
+        }
+        else if( ( parseFloat(filter_arr[i].avgprice_exp) > parseFloat(filter_arr[j].avgprice_exp) || parseFloat(filter_arr[i].avgprice_hcom) > parseFloat(filter_arr[j].avgprice_hcom) ) && filter_type == "highest" )
+        {
+            let temp = filter_arr[i]
+            filter_arr[i] = filter_arr[j]
+            filter_arr[j] = temp
+        }
+        else
+        {
+            if((filter_arr[i].rating > filter_arr[j].rating && filter_type == "moststars" ))
+            {
+            let temp = filter_arr[i]
+            filter_arr[i] = filter_arr[j]
+            filter_arr[j] = temp
+            }
+        }
+    }
+
+}
+
+return filter_arr
+}
+
+
+$('#sort_byfilter').on('change',function(){
+    let filtertype  = this.value
+    console.log("current filter  : ",filtertype)
+    console.log("filtered result in func call : ",filterBasedOptions(filtertype))
+    let filterred_result = filterBasedOptions(filtertype)
+    locationSearchItems(filterred_result)
+})
+
 
 function mapsAPIaction(lat,long)
 {
@@ -2508,11 +2491,13 @@ function hoverOnMapPropertyCard(elementId)
 
 function locationSearchItems(list_items)
 {
-    
-    var map_resultitems =  list_items;
+    // var map_resultitems =  list_items;
     
     if(list_items.length > 0)
     {
+
+    
+
     console.log("list_items  =====> ",list_items);
     
     console.log('current location city : ',list_items[0].city)
@@ -2570,9 +2555,11 @@ function locationSearchItems(list_items)
                 </div><div class="bor-bottom"><div class="Agoda"><a href="#" target="_blank">Expedia</a></div><div class="num-price" id="avg_expprice" >${item.avgprice_exp}</div>
                 </div><div class="bor-bottom"><div class="Agoda">
                 <a href="#" target="_blank"> Booking.com </a>
-                </div><div class="num-price" id="avg_hcomprice_${index}"> ${ (item.avgprice_exp && item.avgprice_exp != undefined) ? Math.round(item.avgprice_exp) : Math.round(item.price) } </div></div></div></div><div class="row m-0 pb-3 price_hide"><div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 pr-0 w-sm-400"><div class="exp-price"><div><img src="{{asset('images/exp-img.svg')}}"></div><div class="value-price"> ${item.avgprice_exp} </div></div> </div><div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 pl-0 w-sm-400"><div class="exp-view"><a href="/hotelDetails?expediaId=" target="_blank">View More</a></div></div></div></div></div>`
+                </div><div class="num-price" id="avg_hcomprice_${index}"> ${ (item.avgprice_exp && item.avgprice_exp != undefined) ? item.avgprice_exp : item.price } </div></div></div></div><div class="row m-0 pb-3 price_hide"><div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 pr-0 w-sm-400"><div class="exp-price"><div><img src="{{asset('images/exp-img.svg')}}"></div><div class="value-price"> ${item.avgprice_exp} </div></div> </div><div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 pl-0 w-sm-400"><div class="exp-view"><a href="/hotelDetails?expediaId=" target="_blank">View More</a></div></div></div></div></div>`
     })
    
+    $('#search_resultajax').html('')
+
     $('#search_resultajax').append(items_map);
 
 
